@@ -54,7 +54,7 @@ class AutofileDirective(SphinxDirective):
         items = []
         for expr in self.content.data:
             expr = os.path.abspath(os.path.join(os.path.dirname(path), expr))
-            for abspath in glob(expr):
+            for abspath in glob(expr, recursive=True):
                 _, _, module_path = abspath.rpartition("/" + prefix + "/")
                 module_name = (
                     module_path.replace("/__init__.py", "")
