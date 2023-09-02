@@ -8,7 +8,7 @@ name = "sphinxcontrib-autofile"
 description = "A sphinx extension to generate module for many files from a glob expression"
 readme = "README.md"
 requires-python = ">= 3.8"
-keywords = ["sphinx", "myst", "requirements.txt"]
+keywords = ["sphinx", "myst", "autofile"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
