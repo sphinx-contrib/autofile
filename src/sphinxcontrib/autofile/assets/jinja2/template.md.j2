@@ -1,0 +1,9 @@
+```{eval-rst}
+{%-for item in items %}
+.. automodule:: {{ item }}
+{%-for key, value in data.items() %}
+    :{{ key }}: {{ value }}
+{%-endfor %}
+
+{%-endfor %}
+```

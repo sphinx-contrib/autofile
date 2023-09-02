@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools_scm[toml] >= 6.2", "setuptools-generate"]
+build-backend = "setuptools.build_meta"
+
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+[project]
+name = "sphinxcontrib-autofile"
+description = "A sphinx extension to generate module for many files from a glob expression"
+readme = "README.md"
+requires-python = ">= 3.8"
+keywords = ["sphinx", "myst", "requirements.txt"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX",
+  "Operating System :: Unix",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[[project.authors]]
+name = "Wu Zhenyu"
+email = "wuzhenyu@ustc.edu"
+
+[project.license]
+text = "GPL v3"
+
+[project.urls]
+Homepage = "https://sphinxcontrib-autofile.readthedocs.io"
+Download = "https://github.com/sphinx-contrib/autofile/releases"
+"Bug Report" = "https://github.com/sphinx-contrib/autofile/issues"
+Source = "https://github.com/sphinx-contrib/autofile"
+
+[tool.setuptools_scm]
+write_to = "src/sphinxcontrib/autofile/_version.py"
+
+[tool.setuptools-generate]
+write-to = "src/sphinxcontrib/autofile/_metainfo.py"
+
+[tool.setuptools.package-data]
+"sphinxcontrib.autofile" = ["py.typed"]
+
+[tool.setuptools.dynamic.dependencies]
+file = "requirements.txt"
+
+# begin: scripts/update-pyproject.toml.pl
+[tool.setuptools.dynamic.optional-dependencies.dev]
+file = "requirements/dev.txt"
+# end: scripts/update-pyproject.toml.pl
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+line_length = 79
+profile = "black"
+
+# https://github.com/PyCQA/pydocstyle/issues/418
+[tool.pydocstyle]
+add_ignore = "D205, D400"
+
+[tool.doq]
+template_path = "templates"
+
+[tool.bandit]
+skips = ["B404"]
+
+[tool.bandit.assert_used]
+skips = ["tests/*.py", "*_test.py", "test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = ["if TYPE_CHECKING:", "if __name__ == .__main__.:"]

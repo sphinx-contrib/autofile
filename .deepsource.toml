@@ -1,0 +1,12 @@
+version = 1
+exclude_patterns = []
+# https://github.com/deepsourcelabs/cli/issues/198
+test_patterns = ["tests/*_test.py", "tests/test_*.py"]
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+[[transformers]]
+name = "black"
+enabled = true
