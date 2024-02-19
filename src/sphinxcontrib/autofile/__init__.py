@@ -1,9 +1,9 @@
 r"""Sphinx extension: autofile
 ==============================
 """
+
 from sphinx.application import Sphinx
 
-from ._version import __version__, __version_tuple__  # type: ignore
 from .directive import AutofileDirective
 
 
